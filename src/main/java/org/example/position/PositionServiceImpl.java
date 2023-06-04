@@ -23,6 +23,12 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
+    public PositionDto getByGrade(String grade) {
+        Position position = positionDao.getByGrade(grade);
+        return PositionMapper.toDto(position);
+    }
+
+    @Override
     public PositionDto createPosition(PositionRequestDto dto) {
         String grade = dto.getGrade();
         Position position = positionDao.createPosition(grade);
@@ -47,4 +53,8 @@ public class PositionServiceImpl implements PositionService {
         positionDao.deleteById(id);
     }
 
+    @Override
+    public long getPositionIdByGrade(String grade) {
+        return positionDao.getPositionId(grade);
+    }
 }

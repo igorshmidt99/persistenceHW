@@ -3,13 +3,13 @@ package org.example.user;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import org.example.position.PositionDto;
+import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @Builder
-public class UserDto {
-    private Long id;
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserRequestDto {
     private String name;
-    private PositionDto position;
+    private String position;
 }

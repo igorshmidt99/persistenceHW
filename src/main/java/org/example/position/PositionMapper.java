@@ -22,4 +22,9 @@ public class PositionMapper {
                 .build();
     }
 
+    public static long extractId(ResultSet resultSet) throws SQLException {
+        resultSet.next();
+        return resultSet.getLong(1);
+    }
+
 }

@@ -8,8 +8,8 @@ public final class Connector {
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-                GlobalVariables.getDbUrl(),
-                GlobalVariables.getLogin(),
-                GlobalVariables.getPASSWORD());
+                GlobalVariables.DB_URL,
+                GlobalVariables.LOGIN,
+                GlobalVariables.PASSWORD);
     }
 }

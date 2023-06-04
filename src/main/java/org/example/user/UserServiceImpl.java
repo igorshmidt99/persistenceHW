@@ -1,29 +1,48 @@
 package org.example.user;
 
 import lombok.RequiredArgsConstructor;
+import org.example.position.PositionDto;
+import org.example.position.PositionService;
+import org.example.project.ProjectService;
+import org.example.user.user_projects.UserProjectDao;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
+    private final PositionService positionService;
+    private final UserProjectDao userProjectDao;
+    private final ProjectService projectService;
 
     @Override
     public UserDto getUserById(Long id) {
         User user = userDao.getUserById(id);
-        return UserDto.builder().name(user.getName()).position("lol").build();
+        Long positionId = user.getPosition();
+        PositionDto positionDto = null;
+
+        if (positionId != null) {
+            positionDto = positionService.getById(positionId);
+        }
+        return UserMapper.toDto(user, positionDto);
     }
 
     @Override
-    public UserDto addUser(UserDto userDto) {
-        User user = userDao.addUser(userDto.getName(), 1L);
-        return userDto;
-    }
+    public UserDto addUser(UserRequestDto dto) {
+        String grade = dto.getPosition();
+        String name = dto.getName();
+        PositionDto positionDto = null;
+        Long positionId = null;
 
-    @Override
-    public void deleteUser(String name) {
-        userDao.deleteUser(name);
+        if (grade != null) {
+            positionDto = positionService.getByGrade(grade);
+            positionId = positionDto.getId();
+        }
+        User user = userDao.addUser(name, positionId);
+        return UserMapper.toDto(user, positionDto);
     }
 
     @Override
@@ -32,14 +51,55 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateUser(UserDto dto, Long id) {
+    public UserDto updateUser(UserRequestDto dto, Long id) {
         String name = dto.getName();
-        String position = dto.getPosition();
-        if (name != null && position != null) {
-//            userDao.updateUser()
+        String grade = dto.getPosition();
+
+        if (name != null || grade != null) {
+            Long positionId;
+            PositionDto positionDto = null;
+            User user;
+            if (grade != null && name != null) {
+                positionDto = positionService.getByGrade(grade);
+                positionId = positionDto.getId();
+                user = userDao.updateUser(name, positionId, id);
+            } else if (grade != null) {
+                positionDto = positionService.getByGrade(grade);
+                positionId = positionDto.getId();
+                user = userDao.updateUser(positionId, id);
+            } else {
+                user = userDao.updateUser(name, id);
+            }
+            return UserMapper.toDto(user, positionDto);
         }
-//        return userDao.updateUser();
         return null;
     }
 
+    @Override
+    public UserDtoWithProjects addProjectToUser(Long userId, Long projectId) {
+        userProjectDao.addProjectToUser(userId, projectId);
+        User user = userDao.getUserById(projectId);
+        Set<Long> userProjectsIds = userProjectDao.getUserProjectsId(userId);
+        PositionDto positionDto = null;
+        Long positionId = user.getPosition();
+        if (positionId != null) positionDto = positionService.getById(positionId);
+        Set<String> projects = projectService.getUserProjectsById(userProjectsIds);
+        return UserMapper.toDtoWithProjects(user, positionDto, projects);
+    }
+
+    @Override
+    public UserDtoWithProjects getUserWithProjects(Long userId) {
+        User user = userDao.getUserById(userId);
+        Set<Long> userProjectsIds = userProjectDao.getUserProjectsId(userId);
+        Set<String> projects = projectService.getUserProjectsById(userProjectsIds);
+        PositionDto positionDto = null;
+        Long positionId = user.getPosition();
+        if (positionId != null) positionDto = positionService.getById(user.getPosition());
+        return UserMapper.toDtoWithProjects(user, positionDto, projects);
+    }
+
+    @Override
+    public void deleteUserFromProject(Long userId, Long projectId) {
+        userProjectDao.deleteUserFromProject(userId, projectId);
+    }
 }

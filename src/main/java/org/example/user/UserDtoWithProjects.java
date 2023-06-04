@@ -3,17 +3,18 @@ package org.example.user;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.example.position.PositionDto;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
 @Builder
 @AllArgsConstructor
-public class User {
+@NoArgsConstructor
+public class UserDtoWithProjects {
     private Long id;
     private String name;
-    private Long position;
-    private Set<Long> projects = new HashSet<>();
+    private PositionDto position;
+    private Set<String> projects;
 }

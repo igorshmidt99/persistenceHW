@@ -7,4 +7,5 @@ public interface PositionDao {
     Position update(Long id, String grade);
     void deleteByGrade(String grade);
     void deleteById(Long id);
+    long getPositionId(String grade);
 }
