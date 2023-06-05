@@ -1,14 +1,22 @@
 package org.example.user;
 
 import lombok.RequiredArgsConstructor;
+import org.example.user.dto.UserDto;
+import org.example.user.dto.UserDtoWithProjects;
+import org.example.user.dto.UserRequestDto;
+import org.example.user.service.UserService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
-@RequiredArgsConstructor
 public class UserController {
 
     private final UserService service;
+
+    public UserController(@Qualifier("userServiceImplRepo") UserService service) {
+        this.service = service;
+    }
 
     @GetMapping("/{id}")
     public UserDto getUserById(@PathVariable Long id) {
@@ -35,7 +43,7 @@ public class UserController {
         return service.addProjectToUser(userId, projectId);
     }
 
-    @GetMapping("/project/{userId}")
+    @GetMapping("/projects/{userId}")
     public UserDtoWithProjects getUserWithProjects(@PathVariable Long userId) {
         return service.getUserWithProjects(userId);
     }

@@ -1,14 +1,20 @@
 package org.example.project;
 
-import lombok.RequiredArgsConstructor;
+import org.example.project.dto.ProjectDto;
+import org.example.project.dto.ProjectRequestDto;
+import org.example.project.service.ProjectService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/projects")
-@RequiredArgsConstructor
 public class ProjectController {
 
     private final ProjectService service;
+
+    public ProjectController(@Qualifier("projectServiceImplRepo") ProjectService service) {
+        this.service = service;
+    }
 
     @PostMapping
     public ProjectDto addProject(@RequestBody ProjectRequestDto dto) {
