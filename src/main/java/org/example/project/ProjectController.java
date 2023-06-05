@@ -1,6 +1,9 @@
 package org.example.project;
 
 import lombok.RequiredArgsConstructor;
+import org.example.project.dto.ProjectDto;
+import org.example.project.dto.ProjectRequestDto;
+import org.example.project.service.ProjectService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

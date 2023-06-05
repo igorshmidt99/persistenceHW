@@ -1,6 +1,6 @@
-package org.example.user;
+package org.example.user.dao;
 
-import java.util.Set;
+import org.example.user.model.User;
 
 public interface UserDao {
     User getUserById(Long id);

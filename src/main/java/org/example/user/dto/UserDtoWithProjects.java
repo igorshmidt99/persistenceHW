@@ -1,10 +1,10 @@
-package org.example.user;
+package org.example.user.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.position.PositionDto;
+import org.example.position.dto.PositionDto;
 
 import java.util.Set;
 

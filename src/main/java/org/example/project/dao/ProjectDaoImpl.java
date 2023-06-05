@@ -1,6 +1,8 @@
-package org.example.project;
+package org.example.project.dao;
 
 import org.example.Connector;
+import org.example.project.ProjectMapper;
+import org.example.project.model.Project;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;

@@ -1,6 +1,8 @@
-package org.example.position;
+package org.example.position.dao;
 
 import org.example.Connector;
+import org.example.position.PositionMapper;
+import org.example.position.model.Position;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;

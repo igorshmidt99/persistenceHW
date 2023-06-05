@@ -1,6 +1,8 @@
-package org.example.user;
+package org.example.user.dao;
 
 import org.example.Connector;
+import org.example.user.UserMapper;
+import org.example.user.model.User;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;

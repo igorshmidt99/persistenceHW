@@ -1,6 +1,10 @@
 package org.example.user;
 
 import lombok.RequiredArgsConstructor;
+import org.example.user.dto.UserDto;
+import org.example.user.dto.UserDtoWithProjects;
+import org.example.user.dto.UserRequestDto;
+import org.example.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

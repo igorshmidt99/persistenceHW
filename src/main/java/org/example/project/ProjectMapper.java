@@ -1,5 +1,8 @@
 package org.example.project;
 
+import org.example.project.dto.ProjectDto;
+import org.example.project.model.Project;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;

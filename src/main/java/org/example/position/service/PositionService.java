@@ -1,4 +1,7 @@
-package org.example.position;
+package org.example.position.service;
+
+import org.example.position.dto.PositionDto;
+import org.example.position.dto.PositionRequestDto;
 
 public interface PositionService {
     PositionDto getById(Long id);

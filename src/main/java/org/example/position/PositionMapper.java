@@ -1,5 +1,8 @@
 package org.example.position;
 
+import org.example.position.dto.PositionDto;
+import org.example.position.model.Position;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

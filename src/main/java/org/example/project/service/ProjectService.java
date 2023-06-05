@@ -1,4 +1,7 @@
-package org.example.project;
+package org.example.project.service;
+
+import org.example.project.dto.ProjectDto;
+import org.example.project.dto.ProjectRequestDto;
 
 import java.util.Set;
 

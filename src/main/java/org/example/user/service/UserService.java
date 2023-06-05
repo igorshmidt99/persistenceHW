@@ -1,4 +1,8 @@
-package org.example.user;
+package org.example.user.service;
+
+import org.example.user.dto.UserDto;
+import org.example.user.dto.UserDtoWithProjects;
+import org.example.user.dto.UserRequestDto;
 
 public interface UserService {
     UserDto getUserById(Long id);

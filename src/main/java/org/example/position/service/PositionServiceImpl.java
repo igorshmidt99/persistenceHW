@@ -1,6 +1,11 @@
-package org.example.position;
+package org.example.position.service;
 
 import lombok.RequiredArgsConstructor;
+import org.example.position.PositionMapper;
+import org.example.position.dao.PositionDao;
+import org.example.position.dto.PositionDto;
+import org.example.position.dto.PositionRequestDto;
+import org.example.position.model.Position;
 import org.springframework.stereotype.Service;
 
 @Service

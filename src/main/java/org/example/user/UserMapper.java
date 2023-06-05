@@ -1,6 +1,9 @@
 package org.example.user;
 
-import org.example.position.PositionDto;
+import org.example.position.dto.PositionDto;
+import org.example.user.dto.UserDto;
+import org.example.user.dto.UserDtoWithProjects;
+import org.example.user.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

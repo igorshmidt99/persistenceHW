@@ -1,4 +1,6 @@
-package org.example.position;
+package org.example.position.dao;
+
+import org.example.position.model.Position;
 
 public interface PositionDao {
     Position getById(Long id);

@@ -1,9 +1,15 @@
-package org.example.user;
+package org.example.user.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.position.PositionDto;
-import org.example.position.PositionService;
-import org.example.project.ProjectService;
+import org.example.position.dto.PositionDto;
+import org.example.position.service.PositionService;
+import org.example.project.service.ProjectService;
+import org.example.user.UserMapper;
+import org.example.user.dao.UserDao;
+import org.example.user.dto.UserDto;
+import org.example.user.dto.UserDtoWithProjects;
+import org.example.user.dto.UserRequestDto;
+import org.example.user.model.User;
 import org.example.user.user_projects.UserProjectDao;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package org.example.project;
+package org.example.position.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class ProjectRequestDto {
-    private String name;
+@NoArgsConstructor
+public class PositionRequestDto {
+    private String grade;
 }
