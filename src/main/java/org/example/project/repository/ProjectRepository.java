@@ -1,6 +1,5 @@
 package org.example.project.repository;
 
-import org.example.project.dao.ProjectDao;
 import org.example.project.model.Project;
 
 import java.util.Set;
