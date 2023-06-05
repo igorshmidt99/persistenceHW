@@ -1,6 +1,6 @@
 package org.example.user.user_projects;
 
-import org.example.Connector;
+import org.example.util.Connector;
 import org.example.user.UserMapper;
 import org.springframework.stereotype.Repository;
 

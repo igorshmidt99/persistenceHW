@@ -1,5 +1,8 @@
 package org.example.position;
 
+import org.example.position.dto.PositionDto;
+import org.example.position.model.Position;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -13,6 +16,13 @@ public class PositionMapper {
             position.setGrade(resultSet.getString(2));
         }
         return position;
+    }
+
+    public static Position toEntity(PositionDto dto) {
+        return Position.builder()
+                .id(dto.getId())
+                .grade(dto.getGrade())
+                .build();
     }
 
     public static PositionDto toDto(Position position) {
